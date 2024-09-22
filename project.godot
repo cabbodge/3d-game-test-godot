@@ -63,6 +63,11 @@ RUN={
 ]
 }
 
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
 [shader_globals]
 
 sgt_player_position={
