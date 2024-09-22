@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dru60kpstsqwb"]
+
+[ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_7xctj"]
+[ext_resource type="MeshLibrary" uid="uid://b0pdrye2iovnm" path="res://tileset.tres" id="2_i68vy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mqr4e"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5imon"]
+sky_material = SubResource("ProceduralSkyMaterial_mqr4e")
+
+[sub_resource type="Environment" id="Environment_w4pt2"]
+background_mode = 2
+sky = SubResource("Sky_5imon")
+ambient_light_color = Color(0.734131, 0.983911, 0.857659, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.734131, 0.983911, 0.857659, 1)
+fog_light_energy = 0.01
+fog_density = 0.1
+volumetric_fog_density = 0.0816
+volumetric_fog_albedo = Color(0.734131, 0.983911, 0.857659, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_length = 96.14
+adjustment_brightness = 0.92
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lktsm"]
+size = Vector3(48.2826, 1, 72.301)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79957, 7.66016, -1.26396)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w4pt2")
+
+[node name="player" parent="." instance=ExtResource("1_7xctj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.91054, -6.5426, 1.14135)
+
+[node name="Camera" type="Camera3D" parent="player"]
+transform = Transform3D(0.999957, 2.99752e-05, -0.00928451, 0, 0.999995, 0.00322851, 0.00928456, -0.00322837, 0.999952, -0.0689928, 0.029552, -0.276869)
+current = true
+fov = 85.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="player/Camera"]
+transform = Transform3D(0.999869, -0.00131878, -0.016116, 0.00354337, 0.990314, 0.1388, 0.0157769, -0.138839, 0.990189, -0.114461, 0.230531, 0.458123)
+light_color = Color(0.734131, 0.983911, 0.857659, 1)
+light_energy = 2.131
+light_volumetric_fog_energy = 0.943
+light_specular = 0.177
+spot_range = 4.95183
+spot_angle = 30.4255
+
+[node name="respawn collision" type="Area3D" parent="."]
+transform = Transform3D(-0.999957, -2.9975e-05, 0.00928442, 0, 0.999995, 0.00322851, -0.00928447, 0.00322837, -0.999952, 0.0372552, 3.18482, 3.69186)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="respawn collision"]
+transform = Transform3D(10.5247, 1.27329e-11, -3.72529e-09, 2.91038e-11, 0.988295, 5.58794e-09, 2.23517e-08, -2.32831e-09, 4.30843, -2.98023e-08, -14.4009, -4.76837e-07)
+shape = SubResource("BoxShape3D_lktsm")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1.00038, 0, 0, 0, 1.00038, 0, 0, 0, 1.00038, 0, -8, 0)
+mesh_library = ExtResource("2_i68vy")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65529, 2, 1441794, 65528, 1, 1441794, 65529, 1, 1441794, 65529, 3, 1441794, 65528, 3, 1441794, 65527, 3, 1441794, 65527, 2, 1441794, 65527, 1, 1441794, 65527, 0, 1441794, 65528, 0, 1441794, 65529, 0, 1441794, 65530, 0, 1441794, 65530, 1, 1441794, 65530, 2, 1441794, 65527, 65535, 0, 65526, 0, 1048576, 65526, 3, 1048576, 65527, 4, 655363, 65531, 3, 1441792, 65531, 0, 1441792, 65531, 65535, 1, 65530, 65535, 0, 65526, 65535, 1048577, 65526, 4, 655361, 65531, 4, 1441793, 65531, 1, 1441792, 65531, 2, 1441792, 65528, 65535, 0, 65529, 65535, 0, 65526, 2, 1048576, 65526, 1, 1048576, 65530, 3, 1441794, 65530, 4, 1441795, 65529, 4, 1048578, 65528, 4, 1048578, 65528, 5, 655362, 65529, 5, 655362, 65530, 5, 1441792, 65528, 6, 1048578, 65529, 6, 1048578, 65530, 6, 1441792, 65530, 7, 1441792, 65529, 7, 1441794, 65528, 7, 1441794, 65529, 10, 1441794, 65529, 11, 1441794, 65529, 12, 1441794, 65529, 13, 1441794, 65529, 14, 1441794, 65529, 15, 1441794, 65528, 15, 1048578, 65530, 8, 1441792, 65530, 9, 1441792, 65530, 10, 1441792, 65530, 11, 1441792, 65530, 12, 1441792, 65530, 13, 1441792, 65530, 15, 1441792, 65527, 5, 1048576, 65527, 6, 1048576, 65527, 7, 1048576, 65527, 8, 1048576, 65527, 9, 1048576, 65527, 10, 1048576, 65527, 11, 1048576, 65527, 12, 1048576, 65527, 13, 1048576, 65527, 14, 1048576, 65528, 8, 1048578, 65528, 12, 1048578, 65528, 13, 1048578, 65528, 14, 1048578, 65529, 9, 1441794, 65529, 8, 1441794, 65528, 9, 1048578, 65530, 14, 1441792, 65528, 10, 1048578, 65528, 11, 1048578, 65528, 2, 1441794, 65527, 16, 655360, 65530, 16, 1441793, 65529, 16, 655360, 65528, 16, 655360, 65526, 15, 0, 65527, 15, 1048579, 65526, 16, 655360, 65525, 16, 655360, 65524, 16, 655360, 65523, 16, 655360, 65522, 16, 655360, 65521, 16, 655360, 65520, 16, 655360, 65519, 16, 655360, 65518, 16, 655360, 65517, 16, 655360, 65516, 16, 655360, 65515, 16, 655360, 65514, 16, 655360, 65513, 16, 655360, 65525, 15, 0, 65524, 15, 0, 65523, 15, 0, 65522, 15, 0, 65521, 15, 0, 65520, 15, 0, 65519, 15, 0, 65518, 15, 0, 65517, 15, 0, 65516, 15, 0, 65515, 15, 0, 65514, 15, 0, 65513, 15, 0, 65512, 16, 655361, 65512, 15, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]

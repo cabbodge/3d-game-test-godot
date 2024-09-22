@@ -1,0 +1,28 @@
+# Godot-specific files
+.import/
+export.cfg
+export_presets.cfg
+.godot
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Godot Editor Config (optional, can be shared across teams)
+# Remove the next line if you want to share your editor settings
+.editor_settings-*.tres
+
+# Mono/C# specific
+.mono/
+*.csproj
+*.sln
+*.suo
+*.userprefs
+*.pidb
+*.pdb
+*.mdb
+*.vcxproj
+*.cache/
+.idea/
+.vscode/
